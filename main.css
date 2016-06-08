@@ -1,0 +1,10 @@
+div.wrapper{
+  width: 50%;
+  background-color: #eee;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 2.5em;
+  font-size: 18px;
+  font-family: sans-serif;
+  padding: 10px 35px;
+}

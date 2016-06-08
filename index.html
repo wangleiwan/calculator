@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Water Consumption Calculator</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Water/Wastewater Monthly Consumption Calculator</h1>
+    <div class="rateClass">
+      Please choose your property type
+      <select class="propertyType">
+        <option value="NULL">---------</option>
+        <option value="RESIDENTIAL">RESIDENTIAL</option>
+        <option value="LDM">LDM</option>
+        <option value="COMMERCIAL">COMMERCIAL</option>
+        <option value="INSTITUTIONAL">INSTITUTIONAL</option>
+        <option value="INDUSTRIAL">INDUSTRIAL</option>
+      </select>
+    </div>
+    <div class="landmeter">
+      Land Size <input class="landsize" type="text" placeholder="Hectares"><br>
+      Meter Size
+      <select class="metersize">
+        <option value="0">---------</option>
+        <option value="16mm">16mm</option>
+        <option value="19mm">19mm</option>
+        <option value="25mm">25mm</option>
+        <option value="40mm">40mm</option>
+        <option value="50mm">50mm</option>
+        <option value="76mm">76mm</option>
+        <option value="100mm">100mm</option>
+        <option value="150mm">150mm</option>
+        <option value="200mm">200mm</option>
+        <option value="250mm">250mm</option>
+      </select>
+    </div>
+
+    <div class="option">
+      <input type="radio" name="reading" value="reading">Calculate From Reading
+      <input type="radio" name="reading" value="consumption">Calculate From Consumption
+    </div>
+    <div class="optionA">
+      <div class="readings">
+        Enter Last Reading <input type="text" id="lastReading" placeholder="Last Reading" /> <br>
+        Enter Current Reading <input type="text" id="currReading" placeholder="Current Reading" />
+      </div>
+    </div>
+    <div class="optionB">
+      <div class="consumption">
+        Enter your consumption <input type="text" id="consumption" placeholder="Cubic Meters" />
+      </div>
+    </div>
+    <button class="submit">Sumbit</button>
+    <div class="result">I am the result</div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
