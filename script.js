@@ -136,7 +136,6 @@ $(document).ready(function() {
   }
 
   function calculate(event){
-    //total infrastructure charges
     if(event.data.option === 'reading'){
       consumption = parseFloat(currReading.val()) - parseFloat(lastReading.val());
     } else {
