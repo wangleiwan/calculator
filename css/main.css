@@ -41,6 +41,13 @@ img.logo {
   height: 50px;
 }
 
+.invalid {
+  border: 1px solid red;
+}
+
+.error {
+  color: red;
+}
 
 .infraColor {
   width: 15px;

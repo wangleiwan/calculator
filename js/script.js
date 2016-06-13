@@ -6,6 +6,7 @@ $(document).ready(function() {
   optionB.hide();
   visual.hide();
 
+
   var radio = $('input[name=reading]');
   radio.on('click', showOptions);
 
@@ -21,6 +22,7 @@ $(document).ready(function() {
     }
   }
 
+///////////////////////////////////////DATA////////////////////////////////////////////////
 //speadsheet -- Hidden list table
   var list = {
     "RateClasses":
@@ -59,6 +61,8 @@ $(document).ready(function() {
     "WaterWasteRate": [0,1.8305,2.3536,2.6151,0.9936,0.9414,0.8578,0.7636]
   }
 
+///////////////////////////////////////////////////////////////////////////////////////
+
   var propertyType = $('.propertyType');
   var landsize = $('.landsize');
   var metersize = $('.metersize');
@@ -82,6 +86,7 @@ $(document).ready(function() {
   var totalUsageCharge=0;
   var totalCharge = 0;
 
+//calculate the total infrastructure charges
   function totalInfrastructureCharges(data) {
     waterConnectionCharge = data.WaterConnect[data.MeterSize.indexOf(metersize.val())];
     wasteWaterConnectionCharge = data.WasteWaterConnect[data.MeterSize.indexOf(metersize.val())];
@@ -103,7 +108,7 @@ $(document).ready(function() {
       + customerAssisFund + FIREPROTECTIONCHARGE);
     }
 
-
+//calculate the total usage charges
   function usageCharges(data) {
     var tierRange = data.TierRange.reduce((prev, curr) => {
       return ((consumption >= prev) && (consumption < curr) ? prev : curr);
@@ -137,6 +142,7 @@ $(document).ready(function() {
     }
   }
 
+//the visual graph of the calculation
   function showGraph(infraCharges, usageCharges) {
     var values = [infraCharges, usageCharges];
     $('.pieChart').sparkline(values, {
@@ -150,31 +156,88 @@ $(document).ready(function() {
     $.sparkline_display_visible();
   }
 
+//validate user inputs
+  function validate() {
+    if(propertyType.val() === 'NULL'){
+      propertyType.addClass('invalid');
+      return false;
+    } else {
+      propertyType.removeClass('invalid');
+    }
+    if(isNaN(parseFloat(landsize.val())) || parseFloat(landsize.val()) <= 0) {
+      landsize.addClass('invalid');
+      return false;
+    } else {
+      landsize.removeClass('invalid');
+    }
+    if(parseFloat(metersize.val()) === 0) {
+      metersize.addClass('invalid');
+      return false
+    } else {
+      metersize.removeClass('invalid');
+    }
+    if(radio.filter(':checked').val() === 'reading') {
+      if(isNaN(parseFloat(lastReading.val())) || parseFloat(lastReading.val()) <= 0 ){
+        lastReading.addClass('invalid');
+        return false;
+      } else {
+        lastReading.removeClass('invalid');
+      }
+      if(isNaN(parseFloat(currReading.val())) || parseFloat(currReading.val()) <= 0 ){
+        currReading.addClass('invalid');
+        return false;
+      } else {
+        currReading.removeClass('invalid');
+      }
+      if(parseFloat(currReading.val()) < parseFloat(lastReading.val())) {
+        currReading.addClass('invalid');
+        return false;
+      } else {
+        currReading.removeClass('invalid');
+      }
+    }
+    if(radio.filter(':checked').val() === 'consumption' &&
+      (isNaN(parseFloat(consumptionInput.val())) || parseFloat(consumptionInput.val()) < 0)) {
+      consumptionInput.addClass('invalid');
+      return false;
+    } else {
+      consumptionInput.removeClass('invalid');
+    }
+    return true;
+  }
+
+// calculate the total charges
   function calculate(event){
-    if(event.data.option === 'reading'){
-      consumption = parseFloat(currReading.val()) - parseFloat(lastReading.val());
-    } else {
-      consumption = parseFloat(consumptionInput.val());
-    }
+    if(validate()) {
+      if(event.data.option === 'reading'){
+        consumption = parseFloat(currReading.val()) - parseFloat(lastReading.val());
+      } else {
+        consumption = parseFloat(consumptionInput.val());
+      }
 
-    totalInfrastructureCharges(list);
+      totalInfrastructureCharges(list);
 
-    if(propertyType.val() === 'LDM') {
-      usageCharges(ratesLDM);
-      totalUsageCharge = parseFloat(LDMwaterUsage) + parseFloat(LDMwasteWaterUsage);
-    } else {
-      usageCharges(rates);
-      totalUsageCharge = parseFloat(waterUsage) + parseFloat(wasteWaterUsage);
-    }
+      if(propertyType.val() === 'LDM') {
+        usageCharges(ratesLDM);
+        totalUsageCharge = parseFloat(LDMwaterUsage) + parseFloat(LDMwasteWaterUsage);
+      } else {
+        usageCharges(rates);
+        totalUsageCharge = parseFloat(waterUsage) + parseFloat(wasteWaterUsage);
+      }
 
-    totalCharge = (totalUsageCharge + totalInfraCharge).toFixed(2).replace(/./g, function(c, i, a) {
+      totalCharge = (totalUsageCharge + totalInfraCharge).toFixed(2).replace(/./g, function(c, i, a) {
         return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-    });
-    $('div.result').html('Your estimated bill will be: $' + totalCharge);
+      });
+      $('.result').html('Your estimated bill will be: $' + totalCharge).show();
 
-    //show graph
-    showGraph(totalInfraCharge.toFixed(2), totalUsageCharge.toFixed(2));
-
+      //show graph
+      showGraph(totalInfraCharge.toFixed(2), totalUsageCharge.toFixed(2));
+      $('.error').hide();
+    } else {
+      $('.error').html('Please enter correct information in the red box.').show();
+      $('.result').hide();
+      visual.hide();
+    }
   }
 
 });
