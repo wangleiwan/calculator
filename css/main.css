@@ -54,8 +54,8 @@ img.logo {
 
 .main{
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 
 .pieChart {
@@ -65,8 +65,9 @@ img.logo {
 .visual {
   height: 350px;
   width: 30%;
-  border: 1px black solid;
-  padding: 0px 15px;
+  border: 1px white solid;
+  border-radius: 2%;
+  padding-left: 30px;
   margin: 10px 0px;
 }
 
