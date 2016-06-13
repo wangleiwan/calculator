@@ -106,7 +106,7 @@ $(document).ready(function() {
 
   function usageCharges(data) {
     var tierRange = data.TierRange.reduce((prev, curr) => {
-      return ((consumption > prev) && (consumption < curr) ? prev : curr);
+      return ((consumption >= prev) && (consumption < curr) ? prev : curr);
     });
     var tierRangeIndex = data.TierRange.indexOf(tierRange);
 

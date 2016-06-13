@@ -20,6 +20,10 @@ header{
   align-items: flex-start;
 }
 
+label {
+  cursor: pointer;
+}
+
 img.logo {
   display: inline;
   width: 150px;
@@ -54,7 +58,7 @@ img.logo {
 
 .main{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -65,8 +69,8 @@ img.logo {
 .visual {
   height: 350px;
   width: 30%;
-  border: 1px white solid;
-  border-radius: 2%;
+  border: 1px #7A9199 solid;
+  border-radius: 5%;
   padding-left: 30px;
   margin: 10px 0px;
 }
