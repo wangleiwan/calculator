@@ -1,0 +1,81 @@
+div.wrapper{
+  width: 60%;
+  background-color: #eee;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 2.5em;
+  font-size: 18px;
+  font-family: sans-serif;
+  padding: 10px 15px;
+  position: relative;
+}
+
+h2 {
+  margin: 10px 0px;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+img.logo {
+  display: inline;
+  width: 150px;
+  size: contain;
+}
+
+.legend {
+  margin-bottom: 30px;
+}
+
+.infra, .usage {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 50px;
+}
+
+
+.infraColor {
+  width: 15px;
+  height: 15px;
+  background-color: #EB1005;
+  margin-right: 10px;
+}
+
+.usageColor {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  background-color: #4FE825;
+}
+
+.main{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.pieChart {
+  margin:0px 0px 10px 0px;
+}
+
+.visual {
+  height: 350px;
+  width: 30%;
+  border: 1px black solid;
+  padding: 0px 15px;
+  margin: 10px 0px;
+}
+
+.calc {
+  width: 70%;
+}
+
+footer {
+  text-align: center;
+  font-size: 14px;
+  height: 30px;
+}

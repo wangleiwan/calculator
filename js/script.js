@@ -1,8 +1,10 @@
 $(document).ready(function() {
   var optionA = $('div.optionA');
   var optionB = $('div.optionB');
+  var visual = $('div.visual');
   optionA.hide();
   optionB.hide();
+  visual.hide();
 
   var radio = $('input[name=reading]');
   radio.on('click', showOptions);
@@ -97,8 +99,8 @@ $(document).ready(function() {
     }
 
     totalInfraCharge =
-      waterConnectionCharge + wasteWaterConnectionCharge + stormDrainageCharge
-      + customerAssisFund + FIREPROTECTIONCHARGE;
+      (waterConnectionCharge + wasteWaterConnectionCharge + stormDrainageCharge
+      + customerAssisFund + FIREPROTECTIONCHARGE);
     }
 
 
@@ -135,6 +137,19 @@ $(document).ready(function() {
     }
   }
 
+  function showGraph(infraCharges, usageCharges) {
+    var values = [infraCharges, usageCharges];
+    $('.pieChart').sparkline(values, {
+      type: 'pie',
+      width: '200px',
+      height: '200px',
+      offset: '-90',
+      sliceColors: ['#EB1005', '#4FE825']
+    });
+    visual.show();
+    $.sparkline_display_visible();
+  }
+
   function calculate(event){
     //total infrastructure charges
     if(event.data.option === 'reading'){
@@ -153,8 +168,14 @@ $(document).ready(function() {
       totalUsageCharge = parseFloat(waterUsage) + parseFloat(wasteWaterUsage);
     }
 
-    totalCharge = (totalUsageCharge + totalInfraCharge).toFixed(2);
+    totalCharge = (totalUsageCharge + totalInfraCharge).toFixed(2).replace(/./g, function(c, i, a) {
+        return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+    });
     $('div.result').html('Your estimated bill will be: $' + totalCharge);
+
+    //show graph
+    showGraph(totalInfraCharge.toFixed(2), totalUsageCharge.toFixed(2));
+
   }
 
 });
