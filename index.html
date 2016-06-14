@@ -1,74 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Water Consumption Calculator</title>
-  <link rel="stylesheet" href="css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main2.css">
+  <title>Calculator</title>
 </head>
 <body>
-  <div class="wrapper">
+  <div class="container">
     <header>
-      <h2>Water/Wastewater Monthly Bill Calculator</h2>
-      <img src="img/WatsonLogo.png" alt="" class="logo">
+      <div class="row header">
+        <div class="col-lg-9 col-md-6 col-sm-6">
+          <h2 class="header">Water/Wastewater Monthly Bill Calculator</h2>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <img src="img/WatsonLogo.png" alt="" class="logo">
+        </div>
+      </div>
     </header>
-    <div class="main">
-      <div class="calc">
-        <div class="rateClass">
-          Please choose your property type
-          <select class="propertyType">
-            <option value="NULL" selected="selected"></option>
-            <option value="RESIDENTIAL">RESIDENTIAL</option>
-            <option value="LDM">LDM</option>
-            <option value="COMMERCIAL">COMMERCIAL</option>
-            <option value="INSTITUTIONAL">INSTITUTIONAL</option>
-            <option value="INDUSTRIAL">INDUSTRIAL</option>
-          </select>
+    <div class="row">
+      <div class="col-lg-7 col-md-7 col-sm-7 calc">
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <fieldset class="form-group">
+              <label for="propertyType">Property Type</label>
+              <select class="form-control" id="propertyType">
+                <option value="NULL" selected="selected">Please Select</option>
+                <option value="RESIDENTIAL">RESIDENTIAL</option>
+                <option value="LDM">LDM</option>
+                <option value="COMMERCIAL">COMMERCIAL</option>
+                <option value="INSTITUTIONAL">INSTITUTIONAL</option>
+                <option value="INDUSTRIAL">INDUSTRIAL</option>
+              </select>
+            </fieldset>
+          </div>
         </div>
-        <div class="landmeter">
-          Land Size <input class="landsize" type="number" placeholder="Hectares"><br>
-          Meter Size
-          <select class="metersize">
-            <option value="0" selected="selected"></option>
-            <option value="16mm">16mm</option>
-            <option value="19mm">19mm</option>
-            <option value="25mm">25mm</option>
-            <option value="40mm">40mm</option>
-            <option value="50mm">50mm</option>
-            <option value="76mm">76mm</option>
-            <option value="100mm">100mm</option>
-            <option value="150mm">150mm</option>
-            <option value="200mm">200mm</option>
-            <option value="250mm">250mm</option>
-          </select>
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <fieldset class="form-group">
+              <label for="landSize">Land Size</label>
+              <input type="number" class="form-control" id="landSize" placeholder="Hectares">
+            </fieldset>
+          </div>
         </div>
-
-        <div class="option">
-          <label><input type="radio" name="reading" value="reading">Calculate From Reading</label>
-          <label><input type="radio" name="reading" value="consumption">Calculate From Consumption</label>
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <fieldset class="form-group">
+              <label for="meterSize">Meter Size</label>
+              <select class="form-control" id="meterSize">
+                <option value="0" selected="selected">Please Select</option>
+                <option value="16mm">16mm</option>
+                <option value="19mm">19mm</option>
+                <option value="25mm">25mm</option>
+                <option value="40mm">40mm</option>
+                <option value="50mm">50mm</option>
+                <option value="76mm">76mm</option>
+                <option value="100mm">100mm</option>
+                <option value="150mm">150mm</option>
+                <option value="200mm">200mm</option>
+                <option value="250mm">250mm</option>
+              </select>
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="radio option">
+              <label class="c-input c-radio">
+                <input type="radio" name="reading" value="reading">
+                <span class="c-indicator"></span>
+                Calculate From Reading
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="radio option">
+              <label class="c-input c-radio">
+                <input type="radio" name="reading" value="consumption">
+                <span class="c-indicator"></span>
+                Calculate From Consumption
+              </label>
+            </div>
+          </div>
         </div>
         <div class="optionA">
-          <div class="readings">
-            Enter Last Reading <input type="number" id="lastReading" placeholder="Last Reading"/> <br>
-            Enter Current Reading <input type="number" id="currReading" placeholder="Current Reading" />
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10">
+              <fieldset class="form-group">
+                <label for="lastReading">Last Reading</label>
+                <input type="number" class="form-control" id="lastReading" placeholder="Cubic Meters">
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10">
+              <fieldset class="form-group">
+                <label for="currReading">Current Reading</label>
+                <input type="number" class="form-control" id="currReading" placeholder="Cubic Meters">
+              </fieldset>
+            </div>
           </div>
         </div>
-        <div class="optionB">
-          <div class="consumption">
-            Enter your consumption <input type="number" id="consumption" placeholder="Cubic Meters"/>
+        <div class="row optionB">
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <fieldset class="form-group">
+              <label for="consumption">Consumption</label>
+              <input type="number" class="form-control" id="consumption" placeholder="Cubic Meters">
+            </fieldset>
           </div>
         </div>
-        <button type="button" class="submit">Submit</button>
-        <div class="error"></div>
-        <div class="result"></div>
-      </div>
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <button class="btn btn-primary check">Check</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <div class="result">This is the result</div>
+          </div>
+        </div>
 
-      <div class="visual">
-        <div class="legend">
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-5 visual">
+        <div class="row">
           <div class="infra">
             <div class="infraColor"></div>
             <p>Infrastructure Charges</p>
           </div>
-          <div class="usage">
+        </div>
+        <div class="row">
+          <div class="col-lg-6 usage">
             <div class="usageColor"></div>
             <p>Usage Charges</p>
           </div>
@@ -77,14 +140,13 @@
       </div>
     </div>
     <footer>
-      <div class="copyrights">
-        &copy 2016 Carosoft
-      </div>
-    </footer>
+      <p>&copy 2016 Carosoft</p>
+    <footer>
   </div>
 
-  <script src="js/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="js/jquery.sparkline.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+div.header {
+  margin: 10px 0;
+}
+
+img.logo {
+  width: 150px;
+  size: contain;
+}
+
+label {
+  font-size: 18px;
+}
+
+.infraColor {
+  width: 15px;
+  height: 15px;
+  background-color: #EB1005;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.usageColor {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  background-color: #4FE825;
+  display: inline-block;
+}
+
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
