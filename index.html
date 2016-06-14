@@ -3,88 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <title>Water Consumption Calculator</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <h2>Water/Wastewater Monthly Bill Calculator</h2>
-      <img src="img/WatsonLogo.png" alt="" class="logo">
-    </header>
-    <div class="main">
-      <div class="calc">
-        <div class="rateClass">
-          Please choose your property type
-          <select class="propertyType">
-            <option value="NULL" selected="selected"></option>
-            <option value="RESIDENTIAL">RESIDENTIAL</option>
-            <option value="LDM">LDM</option>
-            <option value="COMMERCIAL">COMMERCIAL</option>
-            <option value="INSTITUTIONAL">INSTITUTIONAL</option>
-            <option value="INDUSTRIAL">INDUSTRIAL</option>
-          </select>
-        </div>
-        <div class="landmeter">
-          Land Size <input class="landsize" type="number" placeholder="Hectares"><br>
-          Meter Size
-          <select class="metersize">
-            <option value="0" selected="selected"></option>
-            <option value="16mm">16mm</option>
-            <option value="19mm">19mm</option>
-            <option value="25mm">25mm</option>
-            <option value="40mm">40mm</option>
-            <option value="50mm">50mm</option>
-            <option value="76mm">76mm</option>
-            <option value="100mm">100mm</option>
-            <option value="150mm">150mm</option>
-            <option value="200mm">200mm</option>
-            <option value="250mm">250mm</option>
-          </select>
+  <div class="container">
+    <div class="wrapper">
+      <div class="header">
+        <h2>Water/Wastewater Monthly Bill Calculator</h2>
+        <img src="img/WatsonLogo.png" alt="" class="logo">
+      </div>
+      <div class="main">
+        <div class="row">
+          <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+              <div class="form-group rateClass">
+                Property type
+                <select class="form-control propertyType">
+                  <option value="NULL" selected="selected"></option>
+                  <option value="RESIDENTIAL">RESIDENTIAL</option>
+                  <option value="LDM">LDM</option>
+                  <option value="COMMERCIAL">COMMERCIAL</option>
+                  <option value="INSTITUTIONAL">INSTITUTIONAL</option>
+                  <option value="INDUSTRIAL">INDUSTRIAL</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+              <div class="form-group landmeter">
+                Land Size <input class="form-control landsize" type="number" placeholder="Hectares"><br>
+                Meter Size
+                <select class="form-control metersize">
+                  <option value="0" selected="selected"></option>
+                  <option value="16mm">16mm</option>
+                  <option value="19mm">19mm</option>
+                  <option value="25mm">25mm</option>
+                  <option value="40mm">40mm</option>
+                  <option value="50mm">50mm</option>
+                  <option value="76mm">76mm</option>
+                  <option value="100mm">100mm</option>
+                  <option value="150mm">150mm</option>
+                  <option value="200mm">200mm</option>
+                  <option value="250mm">250mm</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        <div>
+          <div class="option">
+            <label><input type="radio" name="reading" value="reading">Calculate From Reading</label>
+            <label><input type="radio" name="reading" value="consumption">Calculate From Consumption</label>
+          </div>
+          <div class="optionA">
+            <div class="readings">
+              Enter Last Reading <input type="number" id="lastReading" placeholder="Last Reading"/> <br>
+              Enter Current Reading <input type="number" id="currReading" placeholder="Current Reading" />
+            </div>
+          </div>
+          <div class="optionB">
+            <div class="consumption">
+              Enter your consumption <input type="number" id="consumption" placeholder="Cubic Meters"/>
+            </div>
+          </div>
+          <button type="button" class="btn btn-default">Submit</button>
+          <div class="error"></div>
+          <div class="result"></div>
         </div>
 
-        <div class="option">
-          <label><input type="radio" name="reading" value="reading">Calculate From Reading</label>
-          <label><input type="radio" name="reading" value="consumption">Calculate From Consumption</label>
-        </div>
-        <div class="optionA">
-          <div class="readings">
-            Enter Last Reading <input type="number" id="lastReading" placeholder="Last Reading"/> <br>
-            Enter Current Reading <input type="number" id="currReading" placeholder="Current Reading" />
+        <div class="visual">
+          <div class="legend">
+            <div class="infra">
+              <div class="infraColor"></div>
+              <p>Infrastructure Charges</p>
+            </div>
+            <div class="usage">
+              <div class="usageColor"></div>
+              <p>Usage Charges</p>
+            </div>
           </div>
+          <span class="pieChart">Loading...</span>
         </div>
-        <div class="optionB">
-          <div class="consumption">
-            Enter your consumption <input type="number" id="consumption" placeholder="Cubic Meters"/>
-          </div>
-        </div>
-        <button type="button" class="submit">Submit</button>
-        <div class="error"></div>
-        <div class="result"></div>
       </div>
-
-      <div class="visual">
-        <div class="legend">
-          <div class="infra">
-            <div class="infraColor"></div>
-            <p>Infrastructure Charges</p>
-          </div>
-          <div class="usage">
-            <div class="usageColor"></div>
-            <p>Usage Charges</p>
-          </div>
+      <footer>
+        <div class="copyrights">
+          &copy 2016 Carosoft
         </div>
-        <span class="pieChart">Loading...</span>
-      </div>
+      </footer>
     </div>
-    <footer>
-      <div class="copyrights">
-        &copy 2016 Carosoft
-      </div>
-    </footer>
   </div>
 
   <script src="js/jquery.js"></script>
   <script src="js/jquery.sparkline.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
