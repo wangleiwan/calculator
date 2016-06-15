@@ -1,29 +1,30 @@
-$(document).ready(function() {
-  var optionA = $('div.optionA');
-  var optionB = $('div.optionB');
-  var visual = $('div.visual');
-  optionA.hide();
-  optionB.hide();
-  visual.hide();
-
+$(function() {
+  var optionA = $('.optionA');
+  var optionB = $('.optionB');
+  var btnCheck = $('.check');
+  var visual = $('.visual');
+  var result = $('.result');
+  var error = $('.error');
+  [ optionA, optionB, btnCheck, visual, result, error ].map(item => item.hide());
 
   var radio = $('input[name=reading]');
   radio.on('click', showOptions);
 
   function showOptions(){
+    btnCheck.show();
     if(radio.filter(':checked').val() === 'reading'){
       optionA.show();
       optionB.hide();
-      $('.submit').on('click', {option: 'reading'}, calculate);
+      btnCheck.on('click', {option: 'reading'}, calculate);
     } else{
       optionB.show();
       optionA.hide();
-      $('.submit').on('click', {option: 'consumption'}, calculate);
+      btnCheck.on('click', {option: 'consumption'}, calculate);
     }
   }
 
-///////////////////////////////////////DATA////////////////////////////////////////////////
-//speadsheet -- Hidden list table
+  ///////////////////////////////////////DATA////////////////////////////////////////////////
+  //speadsheet -- Hidden list table
   var list = {
     "RateClasses":
       ["RESIDENTIAL","LDM","COMMERCIAL","INSTITUTIONAL","INDUSTRIAL"],
@@ -45,7 +46,7 @@ $(document).ready(function() {
       [124.19,124.19,124.19,124.19,124.19,0,0,0,0,0]
   };
 
-//waterRatesAndTiers Table & wastewaterRatesAndTiers Table
+  //waterRatesAndTiers Table & wastewaterRatesAndTiers Table
   var rates = {
     "ProratedTier":[7,8,10,10,215,6750,43000,50000],
     "Consumption":[7,0,0,0,0,0,0,0],
@@ -61,11 +62,11 @@ $(document).ready(function() {
     "WaterWasteRate": [0,1.8305,2.3536,2.6151,0.9936,0.9414,0.8578,0.7636]
   }
 
-///////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////Variable Section/////////////////////////////////////////////////
 
-  var propertyType = $('.propertyType');
-  var landsize = $('.landsize');
-  var metersize = $('.metersize');
+  var propertyType = $('#propertyType');
+  var landsize = $('#landSize');
+  var metersize = $('#meterSize');
   var currReading = $('#currReading');
   var lastReading = $('#lastReading');
   var consumptionInput = $('#consumption');
@@ -142,6 +143,7 @@ $(document).ready(function() {
     }
   }
 
+
 //the visual graph of the calculation
   function showGraph(infraCharges, usageCharges) {
     var values = [infraCharges, usageCharges];
@@ -150,63 +152,12 @@ $(document).ready(function() {
       width: '200px',
       height: '200px',
       offset: '-90',
-      sliceColors: ['#EB1005', '#4FE825']
+      sliceColors: ['#EB1005', '#4FE825'],
     });
     visual.show();
     $.sparkline_display_visible();
   }
 
-//validate user inputs
-  function validate() {
-    if(propertyType.val() === 'NULL'){
-      propertyType.addClass('invalid');
-      return false;
-    } else {
-      propertyType.removeClass('invalid');
-    }
-    if(isNaN(parseFloat(landsize.val())) || parseFloat(landsize.val()) <= 0) {
-      landsize.addClass('invalid');
-      return false;
-    } else {
-      landsize.removeClass('invalid');
-    }
-    if(parseFloat(metersize.val()) === 0) {
-      metersize.addClass('invalid');
-      return false
-    } else {
-      metersize.removeClass('invalid');
-    }
-    if(radio.filter(':checked').val() === 'reading') {
-      if(isNaN(parseFloat(lastReading.val())) || parseFloat(lastReading.val()) <= 0 ){
-        lastReading.addClass('invalid');
-        return false;
-      } else {
-        lastReading.removeClass('invalid');
-      }
-      if(isNaN(parseFloat(currReading.val())) || parseFloat(currReading.val()) <= 0 ){
-        currReading.addClass('invalid');
-        return false;
-      } else {
-        currReading.removeClass('invalid');
-      }
-      if(parseFloat(currReading.val()) < parseFloat(lastReading.val())) {
-        currReading.addClass('invalid');
-        return false;
-      } else {
-        currReading.removeClass('invalid');
-      }
-    }
-    if(radio.filter(':checked').val() === 'consumption' &&
-      (isNaN(parseFloat(consumptionInput.val())) || parseFloat(consumptionInput.val()) < 0)) {
-      consumptionInput.addClass('invalid');
-      return false;
-    } else {
-      consumptionInput.removeClass('invalid');
-    }
-    return true;
-  }
-
-// calculate the total charges
   function calculate(event){
     if(validate()) {
       if(event.data.option === 'reading'){
@@ -232,12 +183,58 @@ $(document).ready(function() {
 
       //show graph
       showGraph(totalInfraCharge.toFixed(2), totalUsageCharge.toFixed(2));
-      $('.error').hide();
     } else {
-      $('.error').html('Please enter correct information in the red box.').show();
       $('.result').hide();
       visual.hide();
     }
   }
 
+  function validate() {
+    if(propertyType.val() === 'NULL') {
+      propertyType.parent().addClass('has-danger');
+      return false;
+    } else {
+      propertyType.parent().removeClass('has-danger');
+    }
+    if(isNaN(parseFloat(landsize.val())) || parseFloat(landsize.val()) <= 0) {
+      landsize.parent().addClass('has-danger');
+      return false;
+    } else {
+      landsize.parent().removeClass('has-danger');
+    }
+    if(parseFloat(metersize.val()) === 0) {
+      metersize.parent().addClass('has-danger');
+      return false
+    } else {
+      metersize.parent().removeClass('has-danger');
+    }
+    if(radio.filter(':checked').val() === 'reading') {
+      if(isNaN(parseFloat(lastReading.val())) || parseFloat(lastReading.val()) <= 0 ){
+        lastReading.parent().addClass('has-danger');
+        return false;
+      } else {
+        lastReading.parent().removeClass('has-danger');
+      }
+      if(isNaN(parseFloat(currReading.val())) || parseFloat(currReading.val()) <= 0 ){
+        currReading.parent().addClass('has-danger');
+        return false;
+      } else {
+        currReading.parent().removeClass('has-danger');
+      }
+      if(parseFloat(currReading.val()) < parseFloat(lastReading.val())) {
+        currReading.parent().addClass('has-danger');
+        return false;
+      } else {
+        currReading.parent().removeClass('has-danger');
+      }
+    }
+    if(radio.filter(':checked').val() === 'consumption' &&
+      (isNaN(parseFloat(consumptionInput.val())) || parseFloat(consumptionInput.val()) < 0)) {
+      consumptionInput.parent().addClass('has-danger');
+      return false;
+    } else {
+      consumptionInput.parent().removeClass('has-danger');
+    }
+    return true;
+  }
 });

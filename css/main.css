@@ -1,93 +1,71 @@
-div.wrapper{
-  width: 70%;
-  background-color: #eee;
-  margin: 0 auto;
-  text-align: left;
-  line-height: 2.5em;
-  font-size: 18px;
-  font-family: sans-serif;
-  padding: 10px 15px;
-  position: relative;
+html, body {
+  height: 100%;
 }
 
-h2 {
-  margin: 10px 0px;
-}
-
-.header{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-label {
-  cursor: pointer;
+div.header {
+  margin: 10px 0;
 }
 
 img.logo {
-  display: inline;
   width: 150px;
   size: contain;
 }
 
-.legend {
-  margin-bottom: 30px;
+label {
+  font-size: 18px;
 }
 
-.infra, .usage {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 50px;
-}
-
-.invalid {
-  border: 1px solid red;
-}
-
-.error {
-  color: red;
-}
-
-.infraColor {
-  width: 15px;
-  height: 15px;
+div.infraColor {
+  width: 20px;
+  height: 20px;
   background-color: #EB1005;
+  margin-top: 2px;
   margin-right: 10px;
+  border-radius: 50%;
 }
 
 .usageColor {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
+    margin-top: 2px;
   margin-right: 10px;
   background-color: #4FE825;
+  border-radius: 50%;
 }
 
-.main{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+.legend {
+  margin-bottom: 50px;
 }
 
-.pieChart {
-  margin:0px 0px 10px 0px;
+.legendText {
+  font-size: 17px;
+}
+
+.visual, .calc {
+  padding-top: 20px;
 }
 
 .visual {
-  height: 350px;
-  width: 30%;
-  border: 1px #7A9199 solid;
-  border-radius: 5%;
-  padding-left: 30px;
-  margin: 10px 0px;
+  padding-left: 12%;
+  padding-right: 12%;
+  padding-bottom: 20px;
+  border: 1px #222 solid;
+  border-radius: 2%;
 }
 
-.calc {
-  width: 70%;
+.container {
+  min-height: 100%;
+  position: relative;
 }
 
-footer {
-  text-align: center;
-  font-size: 14px;
-  height: 30px;
+#footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
+
+.jqstooltip {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
