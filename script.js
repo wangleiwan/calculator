@@ -4,7 +4,8 @@ $(function() {
   var btnCheck = $('.check');
   var visual = $('.visual');
   var result = $('.result');
-  [ optionA, optionB, btnCheck, visual, result ].map(item => item.hide());
+  var error = $('.error');
+  [ optionA, optionB, btnCheck, visual, result, error ].map(item => item.hide());
 
   var radio = $('input[name=reading]');
   radio.on('click', showOptions);
@@ -151,14 +152,14 @@ $(function() {
       width: '200px',
       height: '200px',
       offset: '-90',
-      sliceColors: ['#EB1005', '#4FE825']
+      sliceColors: ['#EB1005', '#4FE825'],
     });
     visual.show();
     $.sparkline_display_visible();
   }
 
   function calculate(event){
-    // if(validate()) {
+    if(validate()) {
       if(event.data.option === 'reading'){
         consumption = parseFloat(currReading.val()) - parseFloat(lastReading.val());
       } else {
@@ -183,10 +184,59 @@ $(function() {
       //show graph
       showGraph(totalInfraCharge.toFixed(2), totalUsageCharge.toFixed(2));
       $('.error').hide();
-    // } else {
-    //   $('.error').html('Please enter correct information in the red box.').show();
-    //   $('.result').hide();
-    //   visual.hide();
-    // }
+    } else {
+      $('.error').show();
+      $('.result').hide();
+      visual.hide();
+    }
+  }
+
+  function validate() {
+    if(propertyType.val() === 'NULL') {
+      propertyType.parent().addClass('has-danger');
+      return false;
+    } else {
+      propertyType.parent().removeClass('has-danger');
+    }
+    if(isNaN(parseFloat(landsize.val())) || parseFloat(landsize.val()) <= 0) {
+      landsize.parent().addClass('has-danger');
+      return false;
+    } else {
+      landsize.parent().removeClass('has-danger');
+    }
+    if(parseFloat(metersize.val()) === 0) {
+      metersize.parent().addClass('has-danger');
+      return false
+    } else {
+      metersize.parent().removeClass('has-danger');
+    }
+    if(radio.filter(':checked').val() === 'reading') {
+      if(isNaN(parseFloat(lastReading.val())) || parseFloat(lastReading.val()) <= 0 ){
+        lastReading.parent().addClass('has-danger');
+        return false;
+      } else {
+        lastReading.parent().removeClass('has-danger');
+      }
+      if(isNaN(parseFloat(currReading.val())) || parseFloat(currReading.val()) <= 0 ){
+        currReading.parent().addClass('has-danger');
+        return false;
+      } else {
+        currReading.parent().removeClass('has-danger');
+      }
+      if(parseFloat(currReading.val()) < parseFloat(lastReading.val())) {
+        currReading.parent().addClass('has-danger');
+        return false;
+      } else {
+        currReading.parent().removeClass('has-danger');
+      }
+    }
+    if(radio.filter(':checked').val() === 'consumption' &&
+      (isNaN(parseFloat(consumptionInput.val())) || parseFloat(consumptionInput.val()) < 0)) {
+      consumptionInput.parent().addClass('has-danger');
+      return false;
+    } else {
+      consumptionInput.parent().removeClass('has-danger');
+    }
+    return true;
   }
 });

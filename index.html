@@ -21,7 +21,7 @@
       </div>
     </header>
     <div class="row">
-      <div class="col-lg-7 col-md-7 col-sm-7 calc">
+      <div class="col-lg-7 col-md-7 col-sm-6 calc">
         <div class="row">
           <div class="col-lg-10 col-md-10 col-sm-10">
             <fieldset class="form-group">
@@ -118,30 +118,33 @@
         </div>
         <div class="row">
           <div class="col-lg-10 col-md-10 col-sm-10">
-            <div class="result">This is the result</div>
+            <h3><span class="label label-danger error">Error!</span></h3>
+            <h3><span class="label label-info result"></span></h3>
           </div>
         </div>
-
       </div>
-      <div class="col-lg-5 col-md-5 col-sm-5 visual">
-        <div class="row">
-          <div class="infra">
-            <div class="infraColor"></div>
-            <p>Infrastructure Charges</p>
-          </div>
+      <div class="col-lg-5 col-md-5 col-sm-6 visual">
+        <div>
+          <div class="infraColor pull-left"></div>
+          <div class="legendText">Infrastructure Charges</div>
         </div>
-        <div class="row">
-          <div class="col-lg-6 usage">
-            <div class="usageColor"></div>
-            <p>Usage Charges</p>
-          </div>
+        <div class="legend">
+          <div class="usageColor pull-left"></div>
+          <div class="legendText">Usage Charges</div>
         </div>
-        <span class="pieChart">Loading...</span>
+        <div>
+          <span class="pieChart">Loading...</span>
+        </div>
+        <h4><span class="label label-default">Hover to see details</span></h4>
       </div>
     </div>
     <footer>
-      <p>&copy 2016 Carosoft</p>
-    <footer>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 text-center copyrights">
+          &copy 2016 Carosoft
+        </div>
+      </div>
+    </footer>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
