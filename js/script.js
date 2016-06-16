@@ -183,7 +183,9 @@ $(function() {
 
       //show graph
       showGraph(totalInfraCharge.toFixed(2), totalUsageCharge.toFixed(2));
+      $('.error').hide();
     } else {
+      $('.error').show();
       $('.result').hide();
       visual.hide();
     }

@@ -27,7 +27,7 @@ div.infraColor {
 .usageColor {
   width: 20px;
   height: 20px;
-    margin-top: 2px;
+  margin-top: 2px;
   margin-right: 10px;
   background-color: #4FE825;
   border-radius: 50%;
@@ -38,7 +38,7 @@ div.infraColor {
 }
 
 .legendText {
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .visual, .calc {
@@ -51,6 +51,11 @@ div.infraColor {
   padding-bottom: 20px;
   border: 1px #222 solid;
   border-radius: 2%;
+}
+
+h4.hover {
+  width: 175px;
+  text-align: right;
 }
 
 .container {
