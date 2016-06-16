@@ -64,6 +64,11 @@ div.infraColor {
   left: 50%;
 }
 
+.c-indicator {
+  width: 15px;
+  height: 15px;
+}
+
 .jqstooltip {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
