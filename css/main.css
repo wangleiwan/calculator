@@ -2,6 +2,12 @@ html, body {
   height: 100%;
 }
 
+.wrapper {
+  border: 3px solid #aaa;
+  padding: 15px;
+  margin: 0 auto;
+}
+
 div.header {
   margin: 10px 0;
 }
@@ -46,6 +52,7 @@ div.infraColor {
 }
 
 .visual {
+  margin-top: 60px;
   padding-left: 12%;
   padding-right: 12%;
   padding-bottom: 20px;
@@ -61,12 +68,17 @@ h4.hover {
 .container {
   min-height: 100%;
   position: relative;
+  padding: 0
+}
+
+.container.row {
+  padding-right: 15px;
 }
 
 #footer {
   position: absolute;
   bottom: 0;
-  left: 50%;
+  right: 25px;
 }
 
 .c-indicator {

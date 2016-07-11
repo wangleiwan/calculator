@@ -10,137 +10,141 @@
 </head>
 <body>
   <div class="container">
-    <header>
-      <div class="row header">
-        <div class="col-lg-9 col-md-6 col-sm-6">
-          <h2 class="header">Water/Wastewater Monthly Bill Calculator</h2>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <img src="img/WatsonLogo.png" alt="" class="logo">
-        </div>
-      </div>
-    </header>
-    <div class="row">
-      <div class="col-lg-7 col-md-7 col-sm-6 calc">
-        <div class="row">
-          <div class="col-lg-10 col-md-10 col-sm-10">
-            <fieldset class="form-group">
-              <label for="propertyType">Property Type</label>
-              <select class="form-control" id="propertyType">
-                <option value="NULL" selected="selected">Please Select</option>
-                <option value="RESIDENTIAL">RESIDENTIAL</option>
-                <option value="LDM">LDM</option>
-                <option value="COMMERCIAL">COMMERCIAL</option>
-                <option value="INSTITUTIONAL">INSTITUTIONAL</option>
-                <option value="INDUSTRIAL">INDUSTRIAL</option>
-              </select>
-            </fieldset>
+    <div class="wrapper">
+      <header>
+        <div class="row header">
+          <div class="col-lg-7 col-md-9 col-sm-8">
+            <h2 class="header">Water/Wastewater Monthly Bill Calculator</h2>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-10 col-md-10 col-sm-10">
-            <fieldset class="form-group">
-              <label for="landSize">Land Size</label>
-              <input type="number" class="form-control" id="landSize" placeholder="Hectares">
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-10 col-md-10 col-sm-10">
-            <fieldset class="form-group">
-              <label for="meterSize">Meter Size</label>
-              <select class="form-control" id="meterSize">
-                <option value="0" selected="selected">Please Select</option>
-                <option value="16mm">16mm</option>
-                <option value="19mm">19mm</option>
-                <option value="25mm">25mm</option>
-                <option value="40mm">40mm</option>
-                <option value="50mm">50mm</option>
-                <option value="76mm">76mm</option>
-                <option value="100mm">100mm</option>
-                <option value="150mm">150mm</option>
-                <option value="200mm">200mm</option>
-                <option value="250mm">250mm</option>
-              </select>
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-5">
-            <div class="radio option">
-              <label class="c-input c-radio">
-                <input type="radio" name="reading" value="reading">
-                <span class="c-indicator"></span>
-                Calculate From Reading
-              </label>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <div class="radio option">
-              <label class="c-input c-radio">
-                <input type="radio" name="reading" value="consumption">
-                <span class="c-indicator"></span>
-                Calculate From Consumption
-              </label>
+          <div class="col-lg-5 col-md-3 col-sm-4">
+            <div class="pull-right">
+              <img src="img/WatsonLogo.png" alt="" class="logo">
             </div>
           </div>
         </div>
-        <div class="optionA">
+      </header>
+      <div class="container row">
+        <div class="col-lg-7 col-md-12 calc">
           <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-10">
               <fieldset class="form-group">
-                <label for="lastReading">Last Reading</label>
-                <input type="number" class="form-control" id="lastReading" placeholder="Cubic Meters">
+                <label for="propertyType">Property Type</label>
+                <select class="form-control" id="propertyType">
+                  <option value="NULL" selected="selected">Please Select</option>
+                  <option value="RESIDENTIAL">RESIDENTIAL</option>
+                  <option value="LDM">LDM</option>
+                  <option value="COMMERCIAL">COMMERCIAL</option>
+                  <option value="INSTITUTIONAL">INSTITUTIONAL</option>
+                  <option value="INDUSTRIAL">INDUSTRIAL</option>
+                </select>
               </fieldset>
             </div>
           </div>
           <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-10">
               <fieldset class="form-group">
-                <label for="currReading">Current Reading</label>
-                <input type="number" class="form-control" id="currReading" placeholder="Cubic Meters">
+                <label for="landSize">Land Size</label>
+                <input type="number" class="form-control" id="landSize" placeholder="Hectares">
               </fieldset>
             </div>
           </div>
-        </div>
-        <div class="row optionB">
-          <div class="col-lg-10 col-md-10 col-sm-10">
-            <fieldset class="form-group">
-              <label for="consumption">Consumption</label>
-              <input type="number" class="form-control" id="consumption" placeholder="Cubic Meters">
-            </fieldset>
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10">
+              <fieldset class="form-group">
+                <label for="meterSize">Meter Size</label>
+                <select class="form-control" id="meterSize">
+                  <option value="0" selected="selected">Please Select</option>
+                  <option value="16mm">16mm</option>
+                  <option value="19mm">19mm</option>
+                  <option value="25mm">25mm</option>
+                  <option value="40mm">40mm</option>
+                  <option value="50mm">50mm</option>
+                  <option value="76mm">76mm</option>
+                  <option value="100mm">100mm</option>
+                  <option value="150mm">150mm</option>
+                  <option value="200mm">200mm</option>
+                  <option value="250mm">250mm</option>
+                </select>
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 col-md-5">
+              <div class="radio option">
+                <label class="c-input c-radio">
+                  <input type="radio" name="reading" value="reading">
+                  <span class="c-indicator"></span>
+                  Calculate From Reading
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-7 col-md-7">
+              <div class="radio option">
+                <label class="c-input c-radio">
+                  <input type="radio" name="reading" value="consumption">
+                  <span class="c-indicator"></span>
+                  Calculate From Consumption
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="optionA">
+            <div class="row">
+              <div class="col-lg-10 col-md-10 col-sm-10">
+                <fieldset class="form-group">
+                  <label for="lastReading">Last Reading</label>
+                  <input type="number" class="form-control" id="lastReading" placeholder="Cubic Meters">
+                </fieldset>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-10 col-md-10 col-sm-10">
+                <fieldset class="form-group">
+                  <label for="currReading">Current Reading</label>
+                  <input type="number" class="form-control" id="currReading" placeholder="Cubic Meters">
+                </fieldset>
+              </div>
+            </div>
+          </div>
+          <div class="row optionB">
+            <div class="col-lg-10 col-md-10 col-sm-10">
+              <fieldset class="form-group">
+                <label for="consumption">Consumption</label>
+                <input type="number" class="form-control" id="consumption" placeholder="Cubic Meters">
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10">
+              <button class="btn btn-primary check">Check</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10">
+              <h3><span class="label label-danger error">Error!</span></h3>
+              <h3><span class="label label-success result"></span></h3>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-10 col-md-10 col-sm-10">
-            <button class="btn btn-primary check">Check</button>
+        <div class="col-lg-5 col-lg-offset-0 col-md-6 col-md-offset-1 col-sm-8 col-sm-offset-1 visual">
+          <div>
+            <div class="infraColor pull-left"></div>
+            <div class="legendText">Infrastructure Charges</div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-10 col-md-10 col-sm-10">
-            <h3><span class="label label-danger error">Error!</span></h3>
-            <h3><span class="label label-success result"></span></h3>
+          <div class="legend">
+            <div class="usageColor pull-left"></div>
+            <div class="legendText">Usage Charges</div>
           </div>
+          <div>
+            <span class="pieChart">Loading...</span>
+          </div>
+          <h4 class="hover"><span class="label label-default">Hover to see details</span></h4>
         </div>
-      </div>
-      <div class="col-lg-5 col-md-5 col-sm-6 visual">
-        <div>
-          <div class="infraColor pull-left"></div>
-          <div class="legendText">Infrastructure Charges</div>
-        </div>
-        <div class="legend">
-          <div class="usageColor pull-left"></div>
-          <div class="legendText">Usage Charges</div>
-        </div>
-        <div>
-          <span class="pieChart">Loading...</span>
-        </div>
-        <h4 class="hover"><span class="label label-default">Hover to see details</span></h4>
+        <footer id="footer">
+          <div>Copyright &copy2016 Carosoft</div>
+        </footer>
       </div>
     </div>
-    <footer id="footer">
-      <div>Copyright &copy2016 Carosoft</div>
-    </footer>
   </div>
 
   <script src="js/jquery.js"></script>
